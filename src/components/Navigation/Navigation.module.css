@@ -1,0 +1,22 @@
+.wrap {
+  background-color: plum;
+  display: flex;
+  padding: 20px;
+  box-shadow: 2px 5px 5px rgb(189, 60, 253);
+  border: 1px solid blueviolet;
+}
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.list {
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+  font-weight: bold;
+  color: white;
+}
+.active {
+  color: purple;
+}
