@@ -1,16 +1,20 @@
-import { Axios } from "axios";
+import axios from "axios";
 
-const url =
-  "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1";
+const API_KEY = "3b460c1a89e3d67f044796822871fcd9";
 
-const options = {
-  headers: {
-    // Замість api_read_access_token вставте свій токен
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjQ2MGMxYTg5ZTNkNjdmMDQ0Nzk2ODIyODcxZmNkOSIsInN1YiI6IjY2M2U3M2I4MWI5NmY0MjY5ZTNjOGNlYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.zDV9Pcr1cuGFye23dpbXS5QuyAM8TLZa8AfdByWW2ow",
-  },
+const baseUrl = "https://api.themoviedb.org/3";
+
+const trendingUrl = `${baseUrl}/trending/movie/day?api_key=${API_KEY}`;
+
+export const fetchTrendingMovies = async () => {
+  const { data } = await axios.get(trendingUrl);
+
+  return data;
 };
 
-Axios.get(url, options)
-  .then((response) => console.log(response))
-  .catch((err) => console.error(err));
+export const fetchMovieById = async (id) => {
+  const movieUrl = `${baseUrl}/movie/${id}?api_key=${API_KEY}`;
+  const { data } = await axios.get(movieUrl);
+  console.log(data);
+  return data;
+};
