@@ -6,7 +6,7 @@ const baseUrl = "https://api.themoviedb.org/3";
 
 const trendingUrl = `${baseUrl}/trending/movie/day?api_key=${API_KEY}`;
 
-export const fetchTrendingMovies = async () => {
+export const fetchMovies = async () => {
   const { data } = await axios.get(trendingUrl);
 
   return data;

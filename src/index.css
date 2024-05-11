@@ -16,7 +16,9 @@ ol {
 }
 body {
   display: block;
-  padding: 0;
+  background-image: linear-gradient(#fffff0, #fff0f5);
+  line-height: 1.5;
+  height: 100vh;
 }
 
 button {
