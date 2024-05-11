@@ -4,6 +4,7 @@
   padding: 20px;
   box-shadow: 2px 5px 5px #ffe4e1;
   border: 1px solid #ffe4e1;
+  width: 100%;
 }
 .container {
   max-width: 100%;
