@@ -1,11 +1,20 @@
-import { useEffect, useState } from "react";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 import { fetchMovieById } from "../../service/Api";
 import s from "./MovieDetailsPage.module.css";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
+  const location = useLocation();
+  const goBackRef = useRef(location.state || "/movies");
   const [movie, setMovie] = useState("");
+
   useEffect(() => {
     try {
       const getMovie = async () => {
@@ -21,15 +30,14 @@ const MovieDetailsPage = () => {
   if (!movie) return <h3>Loading...</h3>;
   const year = movie.release_date.split("-")[0];
 
-  const handleGoBack = () => {
-    window.history.go(-1);
-  };
-
   return (
     <div className={s.container}>
-      <button onClick={handleGoBack} className={s.goBack}>
-        Go Back
-      </button>
+      <Link to={goBackRef.current}>
+        <button className={s.goBack} onClick={() => window.history.back()}>
+          Go Back
+        </button>
+      </Link>
+
       <div className={s.wrapper}>
         <img
           className={s.image}
@@ -50,17 +58,16 @@ const MovieDetailsPage = () => {
           <div>
             <h3 className={s.titleGenre}>Genres</h3>
             <ul className={s.list}>
-              {movie.genres.map((genre) => {
-                return (
-                  <li className={s.item} key={genre.id}>
-                    {genre.name}
-                  </li>
-                );
-              })}
+              {movie.genres.map((genre) => (
+                <li className={s.item} key={genre.id}>
+                  {genre.name}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
       </div>
+
       <nav className={s.navigation}>
         <h3 className={s.titleGenre}>Additional Information</h3>
         <NavLink className={s.link} to="cast">
@@ -70,6 +77,7 @@ const MovieDetailsPage = () => {
           Reviews
         </NavLink>
       </nav>
+
       <Outlet />
     </div>
   );
