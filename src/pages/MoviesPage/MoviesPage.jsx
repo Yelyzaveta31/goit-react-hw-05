@@ -57,22 +57,26 @@ const MoviesPage = () => {
         </div>
       </form>
       <div>
-        <div className={s.listWrapper}>
-          <ul className={s.list}>
-            {movies.map((movie) => {
-              return (
-                <li key={movie.id} className={s.item}>
-                  <Link
-                    className={s.link}
-                    to={`/movies/${movie.id.toString()}`}
-                  >
-                    {movie.title}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+        {movies.length === 0 && searchParams.get("query") ? (
+          <p className={s.errorSearch}>No movies found. Please try again.</p>
+        ) : (
+          <div className={s.listWrapper}>
+            <ul className={s.list}>
+              {movies.map((movie) => {
+                return (
+                  <li key={movie.id} className={s.item}>
+                    <Link
+                      className={s.link}
+                      to={`/movies/${movie.id.toString()}`}
+                    >
+                      {movie.title}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

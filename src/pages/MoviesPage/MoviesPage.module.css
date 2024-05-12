@@ -60,3 +60,8 @@
 .link:hover {
   color: #ffb6c1;
 }
+
+.errorSearch {
+  text-align: center;
+  margin-top: 20px;
+}
