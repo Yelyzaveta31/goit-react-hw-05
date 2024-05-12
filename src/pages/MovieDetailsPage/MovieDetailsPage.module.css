@@ -63,3 +63,9 @@
 .link {
   display: flex;
 }
+
+.goBack {
+  border: 2px solid #ffb6c1;
+  width: 100px;
+  border-radius: 20px;
+}
