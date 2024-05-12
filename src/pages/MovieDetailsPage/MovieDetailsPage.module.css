@@ -1,6 +1,8 @@
 .container {
   padding: 20px;
-  height: 600px;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(#fffff0, #fff0f5);
 }
 
 .wrapper {
@@ -21,7 +23,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 15px;
   padding-top: 10px;
 }
 

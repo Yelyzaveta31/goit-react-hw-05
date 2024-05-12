@@ -1,0 +1,27 @@
+.wrapper {
+  padding: 20px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.name {
+  color: black;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.text {
+  color: black;
+  font-size: 13px;
+}
+
+.notFound {
+  text-align: center;
+}

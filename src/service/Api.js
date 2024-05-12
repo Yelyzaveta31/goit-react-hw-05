@@ -18,3 +18,17 @@ export const fetchMovieById = async (id) => {
   console.log(data);
   return data;
 };
+export const fetchCast = async (id) => {
+  const castUrl = `${baseUrl}/movie/${id}/credits?api_key=${API_KEY}`;
+  const { data } = await axios.get(castUrl);
+
+  return data;
+};
+
+export const fetchReviews = async (id) => {
+  const reviewUrl = `${baseUrl}/movie/${id}/reviews?api_key=${API_KEY}`;
+
+  const { data } = await axios.get(reviewUrl);
+
+  return data;
+};
