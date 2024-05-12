@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, Outlet, useParams } from "react-router-dom";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 import { fetchMovieById } from "../../service/Api";
 import s from "./MovieDetailsPage.module.css";
 
@@ -21,12 +21,15 @@ const MovieDetailsPage = () => {
   if (!movie) return <h3>Loading...</h3>;
   const year = movie.release_date.split("-")[0];
 
+  const handleGoBack = () => {
+    window.history.go(-1);
+  };
+
   return (
     <div className={s.container}>
-      <Link className={s.goBack} to="/">
-        {" "}
-        Go Back{" "}
-      </Link>
+      <button onClick={handleGoBack} className={s.goBack}>
+        Go Back
+      </button>
       <div className={s.wrapper}>
         <img
           className={s.image}
